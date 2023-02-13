@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navbar-brand>img{
+    height: 3vh;
+}
+.nav-item{
+    background-color: coral;
+}
+.nav-link{
+    color: white !important;
+}
+.pageSection{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    height: 10vh;
+    align-items: center;
+    background-color: coral;
+    color: white;
+}
+.arrow {
+    border: solid white;
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    padding: 3px;
+}
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}  
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
