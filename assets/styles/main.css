@@ -8,6 +8,7 @@
 }
 .nav-item{
     background-color: coral;
+    border-radius: 12px;
 }
 .nav-link{
     color: white !important;
@@ -34,4 +35,26 @@
 .left {
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
+}
+.searchFilter{
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+    padding: 15px;
+}
+.searchFilter>fieldset{
+    border: none;
+    display: flex;
+    gap: 1em;
+}
+.searchFilter>fieldset>label>input{
+    margin-left: 0.3em;
+}
+.cardContainer{
+    display: flex;
+    gap: 15px;
+}
+.price{
+    display: flex;
+    justify-content: space-around;
 }
