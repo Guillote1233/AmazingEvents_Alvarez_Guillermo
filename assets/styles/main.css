@@ -3,6 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    min-height: 100vh;
+}
+header{
+    min-height: 15vh;
+}
 .navbar-brand>img{
     height: 3vh;
 }
@@ -36,6 +42,9 @@
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
 }
+main{
+    min-height: 74vh;
+}
 .searchFilter{
     display: flex;
     justify-content: space-between;
@@ -52,9 +61,72 @@
 }
 .cardContainer{
     display: flex;
-    gap: 15px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 20px;
 }
 .price{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    
+}
+.card{
+    width: 20%;
+}
+.card-img-top{
+    height: 60%;
+}
+.btn{
+    background-color: coral !important;
+    border-color: coral !important;
+}
+.contactForm{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    padding-top: 10px;
+}
+.contactForm>fieldset>*{
+    display: block;
+    width: 20em;
+}
+textarea{
+    resize: none;
+}
+.submitContact{
+    background-color: coral;
+    border-color: coral;
+    width: 80px;
+    border-radius: 20%;
+}
+.statsTable{
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 10px;
+}
+.headTitle{
+    font-size: 24px;
+    font-weight: normal;
+    background-color: coral;
+}
+.statsTable thead{
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px 5px;
+}
+.statsTable td{
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px 5px;
+}
+footer{
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: coral;
+    color: white;
 }
