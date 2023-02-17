@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amazing Events</title>
-  <link rel="stylesheet" href="../assets/styles/main.css">
+  <link rel="stylesheet" href="main.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
@@ -63,49 +63,13 @@
         </fieldset>
       </form>
     </div>
-    <div class="cardContainer">
-      <div class="card">
+    <div class="cardContainer" id="items">
+      <div class="card" id="cards">
         <img src="../assets/img/Music_Concert.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Music Concert</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          <h5 class="card-title" id="cardTitle">Music Concert</h5>
+          <p class="card-text" id="cardDescription">Some quick example text to build on the card title and make up the bulk of the card's
             content.</p>
-          <div class="price">
-            <h6>Price: $10</h6>
-            <a href="../pages/details.html" class="btn btn-primary">Details</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="../assets/img/Cinema.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Cinema Event</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <div class="price">
-            <h6>Price: $10</h6>
-            <a href="../pages/details.html" class="btn btn-primary">Details</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="../assets/img/Costume_Party.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Costume Party</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <div class="price">
-            <h6>Price: $10</h6>
-            <a href="../pages/details.html" class="btn btn-primary">Details</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="../assets/img/Food_Fair.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Food Fair</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
           <div class="price">
             <h6>Price: $10</h6>
             <a href="../pages/details.html" class="btn btn-primary">Details</a>
@@ -127,5 +91,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+  <script src="data.js"></script>
 </body>
 </html>
