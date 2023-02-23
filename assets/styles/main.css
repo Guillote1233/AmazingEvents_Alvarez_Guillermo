@@ -45,6 +45,10 @@ header{
 main{
     min-height: 75vh;
 }
+.detailsMain{
+    display: flex;
+    justify-content: center;
+}
 .searchFilter{
     display: flex;
     justify-content: space-between;
@@ -61,7 +65,7 @@ main{
 }
 .cardContainer{
     display: flex;
-    justify-content: space-between;
+    gap: 4;
     flex-wrap: wrap;
     margin: 20px;
 }
@@ -100,10 +104,14 @@ textarea{
     width: 80px;
     border-radius: 20%;
 }
+.statsMain{
+    display: flex;
+    justify-content: center;
+}
 .statsTable{
     border-collapse: collapse;
     border-spacing: 0;
-    margin-top: 10px;
+    margin: 10px;
 }
 .headTitle{
     font-size: 24px;
@@ -124,20 +132,23 @@ textarea{
 }
 .detailContainer{
     display: flex;
-    height: 40vh;
-    width: 40vw;
-    margin: 0vh 50vh;
-    padding: 20px;
+    max-height: 50vh;
+    max-width: 50vw;
     border: 2px solid black;
 }
 .imgContainer{
+    display: flex;
+    gap: 2;
+    object-fit: contain;
     border: 2px solid black;
-    padding:10px;
+    margin:20px 20px;
 }
 .descriptionContainer{
+    display: flex;
+    flex-direction: column;
     text-align: center;
     border: 2px solid black;
-    margin-left: 10px;
+    margin: 20px 20px;
 }
 .descriptionContainer p{
     padding:10px;
