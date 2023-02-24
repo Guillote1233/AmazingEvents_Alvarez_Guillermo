@@ -177,12 +177,12 @@ const fragment = document.createDocumentFragment();
 function createCard(array, container){
     for(let items of array){
         let div = document.createElement("div")
-        div.className = "card"
+        div.className = "card col-lg-2"
         div.innerHTML += `
             <img src="${items.image}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${items.name}</h5>
-                <p class="card-text">${items.description}</p>
+                <p class="card-text">${items.category}</p>
                 <div class="price">
                     <h6>$ ${items.price}</h6>
                     <a href="../pages/details.html" class="btn btn-primary">Details</a>
@@ -194,4 +194,3 @@ function createCard(array, container){
 }
 
 createCard(data.events, cardContainer);
-

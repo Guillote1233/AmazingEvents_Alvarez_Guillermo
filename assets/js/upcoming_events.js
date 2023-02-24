@@ -184,7 +184,7 @@ function createCard(array, container){
                 <img src="${items.image}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${items.name}</h5>
-                    <p class="card-text">${items.description}</p>
+                    <p class="card-text">${items.category}</p>
                     <div class="price">
                         <h6>$ ${items.price}</h6>
                         <a href="../pages/details.html" class="btn btn-primary">Details</a>
