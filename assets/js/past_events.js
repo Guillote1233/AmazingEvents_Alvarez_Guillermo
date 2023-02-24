@@ -173,25 +173,27 @@ const data = {
 
 let cardContainer = document.getElementById('eventCard');
 const fragment = document.createDocumentFragment();
+const currentDate = data.currentDate;
 
 function createCard(array, container){
     for(let items of array){
-        let div = document.createElement("div")
-        div.className = "card"
-        div.innerHTML += `
-            <img src="${items.image}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">${items.name}</h5>
-                <p class="card-text">${items.description}</p>
-                <div class="price">
-                    <h6>$ ${items.price}</h6>
-                    <a href="../pages/details.html" class="btn btn-primary">Details</a>
-                </div>
-            </div>`
-        fragment.appendChild(div);
+        if (currentDate < items.date){
+            let div = document.createElement("div")
+            div.className = "card"
+            div.innerHTML += `
+                <img src="${items.image}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${items.name}</h5>
+                    <p class="card-text">${items.description}</p>
+                    <div class="price">
+                        <h6>$ ${items.price}</h6>
+                        <a href="../pages/details.html" class="btn btn-primary">Details</a>
+                    </div>
+                </div>`
+            fragment.appendChild(div);
+        }
     }
     container.appendChild(fragment);
 }
 
 createCard(data.events, cardContainer);
-
