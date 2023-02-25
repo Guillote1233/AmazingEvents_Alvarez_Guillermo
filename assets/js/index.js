@@ -177,7 +177,7 @@ const fragment = document.createDocumentFragment();
 function createCard(array, container){
     for(let items of array){
         let div = document.createElement("div")
-        div.className = "card col-lg-2"
+        div.className = "card col-lg-2 col-md-3 col-sm-12"
         div.innerHTML += `
             <img src="${items.image}" class="card-img-top" alt="...">
             <div class="card-body">

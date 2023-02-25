@@ -179,7 +179,7 @@ function createCard(array, container){
     for(let items of array){
         if (currentDate < items.date){
             let div = document.createElement("div")
-            div.className = "card"
+            div.className = "card col-lg-2 col-md-3 col-sm-12"
             div.innerHTML += `
                 <img src="${items.image}" class="card-img-top" alt="...">
                 <div class="card-body">
