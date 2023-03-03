@@ -1,10 +1,13 @@
 import data from './data.js';
 
-let cardContainer = document.getElementById('eventCard');
+const cardContainer = document.getElementById('eventCard');
 const fragment = document.createDocumentFragment();
+const catCheckbox = document.getElementById('filterCat');
+const searchValue = document.querySelector('input[placeholder="Search..."]');
 
 function createCard(array, container){
-    for(let items of array){
+    container.innerHTML = ""
+    array.forEach(items => {
         let div = document.createElement("div")
         div.className = "card col-lg-2 col-md-3 col-sm-12"
         div.innerHTML += `
@@ -18,47 +21,61 @@ function createCard(array, container){
                 </div>
             </div>`
         fragment.appendChild(div);
-    }
+        
+    });
     container.appendChild(fragment);
 }
 
-function createCategoryFilter(){
-    const categories = data.events.map(cat => cat.category);
-    const finalCategories = categories.filter((item, index) => {
-        return categories.indexOf(item) === index
-    }); 
-    
-    let catContainer = document.getElementById('filterCat');
-    const catFragment = document.createDocumentFragment();
-    
-    for(let items of finalCategories){
-        let label = document.createElement('label')
-        label.textContent = items
-        label.setAttribute("for", items.split(" ").join("").toLowerCase())
-        label.innerHTML += `<input type="checkbox" name="cat" id=${items.split(" ").join("").toLowerCase()}>`
-        catFragment.appendChild(label);
-    }
-    
-    catContainer.appendChild(catFragment);
-}
-
-function searchEvents(){
-    const searchBox = document.getElementById('search-event').value.toLowerCase();
-    const event = document.querySelectorAll(".card");
-    const eventName = document.getElementsByTagName('h5');
-
-    for (let i = 0; i < eventName.length; i++){
-        let searchMatch = event[i];
-        if(searchMatch){
-            let textValue = searchMatch.textContent || searchMatch.innerHTML
-            if(textValue.toLowerCase().indexOf(searchBox) > -1){
-                event[i].style.display = '';
-            }else {
-                event[i].style.display = 'none';
-            }
-        }
-    }
-}
-
 createCard(data.events, cardContainer);
-createCategoryFilter();
+
+function createCategoryList(array){
+    let categories = array.map(cat => cat.category);
+    categories = categories.reduce((accum, elem) => {
+        if(!accum.includes(elem)){
+            accum.push(elem);
+        }
+        return accum;
+    },[])
+        return categories;
+}
+
+let categories = createCategoryList(data.events);
+
+function createCheckboxFilter(array, container){
+    array.forEach(category => {
+        let div = document.createElement('div');
+        div.className = `checkbox-container ${category.toLowerCase()}`
+        div.innerHTML += `<input type="checkbox" id=${category.toLowerCase()} name="category">
+        <label for="${category.toLowerCase()}">${category}</label>`
+        container.appendChild(div);
+    })
+}
+
+createCheckboxFilter(categories, catCheckbox);
+
+function searchFilter(array, value){
+    let filterData = array.filter(elem => elem.name.toLowerCase().includes(value.toLowerCase()));
+    return filterData;
+}
+
+function checkboxFilter(array){
+    let checked = document.querySelector('input[type="checkbox"]:checked');
+    let filteredList = array.filter(elem => elem.category.toLowerCase().includes(checked.id.toLowerCase()))
+    return filteredList;
+}
+
+function filterFinal(array){
+    let arrayFiltered = searchFilter(array, searchValue.value);
+    arrayFiltered = checkboxFilter(arrayFiltered);
+    return arrayFiltered;
+}
+
+searchValue.addEventListener('keyup', (e) => {
+    let dataFilter = filterFinal(data.events)
+    createCard(dataFilter, cardContainer)
+})
+
+catCheckbox.addEventListener('change', ()=> {
+    let dataFilter = filterFinal(data.events)
+    createCard(dataFilter, cardContainer)
+})
