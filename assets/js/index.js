@@ -7,22 +7,26 @@ const searchValue = document.querySelector('input[placeholder="Search..."]');
 
 function createCard(array, container){
     container.innerHTML = ""
-    array.forEach(items => {
-        let div = document.createElement("div")
-        div.className = "card col-lg-2 col-md-3 col-sm-12"
-        div.innerHTML += `
-            <img src="${items.image}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">${items.name}</h5>
-                <p class="card-text">${items.category}</p>
-                <div class="price">
-                    <h6>$ ${items.price}</h6>
-                    <a href="../pages/details.html" class="btn btn-primary">Details</a>
-                </div>
-            </div>`
-        fragment.appendChild(div);
-        
-    });
+    if(array.length > 0){
+        array.forEach(items => {
+            let div = document.createElement("div")
+            div.className = "card col-lg-2 col-md-3 col-sm-12"
+            div.innerHTML += `
+                <img src="${items.image}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${items.name}</h5>
+                    <p class="card-text">${items.category}</p>
+                    <div class="price">
+                        <h6>$ ${items.price}</h6>
+                        <a href="../pages/details.html?id=${items._id}" class="btn btn-primary">Details</a>
+                    </div>
+                </div>`
+            fragment.appendChild(div);
+            
+        });
+    }else{
+        console.log("no hay datos");
+    }
     container.appendChild(fragment);
 }
 
@@ -59,8 +63,16 @@ function searchFilter(array, value){
 }
 
 function checkboxFilter(array){
-    let checked = document.querySelector('input[type="checkbox"]:checked');
-    let filteredList = array.filter(elem => elem.category.toLowerCase().includes(checked.id.toLowerCase()))
+    let checked = document.querySelectorAll('input[type="checkbox"]:checked');
+    let filteredList = [];
+
+    if(checked.length > 0){
+        for(let i=0; i < checked.length; i++){
+            filteredList = filteredList.concat(array.filter(elem => elem.category.toLowerCase().includes(checked[i].id.toLowerCase())))
+        }
+    }else{
+        filteredList = array;
+    }
     return filteredList;
 }
 
@@ -70,7 +82,7 @@ function filterFinal(array){
     return arrayFiltered;
 }
 
-searchValue.addEventListener('keyup', (e) => {
+searchValue.addEventListener('keyup', () => {
     let dataFilter = filterFinal(data.events)
     createCard(dataFilter, cardContainer)
 })

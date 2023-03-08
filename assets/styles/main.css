@@ -130,6 +130,10 @@ textarea{
     border-width: 1px;
     padding: 10px 5px;
 }
+.detailsMain{
+    display: flex;
+    justify-content: center;
+}
 .detailContainer{
     display: flex;
     height: 60vh;

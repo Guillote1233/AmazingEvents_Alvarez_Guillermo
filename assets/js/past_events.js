@@ -1,12 +1,16 @@
 import data from './data.js';
 
-let cardContainer = document.getElementById('eventCard');
+const cardContainer = document.getElementById('eventCard');
 const fragment = document.createDocumentFragment();
-const currentDate = data.currentDate;
+const catCheckbox = document.getElementById('filterCat');
+const searchValue = document.querySelector('input[placeholder="Search..."]');
+const dataEvents = data.events.filter(elem => elem.date < data.currentDate);
+
 
 function createCard(array, container){
-    for(let items of array){
-        if (currentDate > items.date){
+    container.innerHTML = ""
+    if(array.length > 0){
+        array.forEach(items => {
             let div = document.createElement("div")
             div.className = "card col-lg-2 col-md-3 col-sm-12"
             div.innerHTML += `
@@ -16,34 +20,76 @@ function createCard(array, container){
                     <p class="card-text">${items.category}</p>
                     <div class="price">
                         <h6>$ ${items.price}</h6>
-                        <a href="../pages/details.html" class="btn btn-primary">Details</a>
+                        <a href="../pages/details.html?id=${items._id}" class="btn btn-primary">Details</a>
                     </div>
                 </div>`
             fragment.appendChild(div);
-        }
+            
+        });
+    }else{
+        console.log("no hay datos");
     }
     container.appendChild(fragment);
 }
 
-function createCategoryFilter(){
-    const categories = data.events.map(cat => cat.category);
-    const finalCategories = categories.filter((item, index) => {
-        return categories.indexOf(item) === index
-    }); 
-    
-    let catContainer = document.getElementById('filterCat');
-    const catFragment = document.createDocumentFragment();
-    
-    for(let items of finalCategories){
-        let label = document.createElement('label')
-        label.textContent = items
-        label.setAttribute("for", items.split(" ").join("").toLowerCase())
-        label.innerHTML += `<input type="checkbox" name="cat" id=${items.split(" ").join("").toLowerCase()}>`
-        catFragment.appendChild(label);
-    }
-    
-    catContainer.appendChild(catFragment);
+createCard(dataEvents, cardContainer);
+
+function createCategoryList(array){
+    let categories = array.map(cat => cat.category);
+    categories = categories.reduce((accum, elem) => {
+        if(!accum.includes(elem)){
+            accum.push(elem);
+        }
+        return accum;
+    },[])
+        return categories;
 }
 
-createCard(data.events, cardContainer);
-createCategoryFilter();
+let categories = createCategoryList(dataEvents);
+
+function createCheckboxFilter(array, container){
+    array.forEach(category => {
+        let div = document.createElement('div');
+        div.className = `checkbox-container ${category.toLowerCase()}`
+        div.innerHTML += `<input type="checkbox" id=${category.toLowerCase()} name="category">
+        <label for="${category.toLowerCase()}">${category}</label>`
+        container.appendChild(div);
+    })
+}
+
+createCheckboxFilter(categories, catCheckbox);
+
+function searchFilter(array, value){
+    let filterData = array.filter(elem => elem.name.toLowerCase().includes(value.toLowerCase()));
+    return filterData;
+}
+
+function checkboxFilter(array){
+    let checked = document.querySelectorAll('input[type="checkbox"]:checked');
+    let filteredList = [];
+
+    if(checked.length > 0){
+        for(let i=0; i < checked.length; i++){
+            filteredList = filteredList.concat(array.filter(elem => elem.category.toLowerCase().includes(checked[i].id.toLowerCase())))
+        }
+    }else{
+        filteredList = array;
+    }
+    return filteredList;
+}
+
+function filterFinal(array){
+    let arrayFiltered = searchFilter(array, searchValue.value);
+    arrayFiltered = checkboxFilter(arrayFiltered);
+    return arrayFiltered;
+}
+
+searchValue.addEventListener('keyup', () => {
+    let dataFilter = filterFinal(dataEvents)
+    createCard(dataFilter, cardContainer)
+})
+
+catCheckbox.addEventListener('change', ()=> {
+    let dataFilter = filterFinal(dataEvents)
+    createCard(dataFilter, cardContainer)
+})
