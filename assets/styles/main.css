@@ -46,10 +46,6 @@ header{
 main{
     min-height: 75vh;
 }
-.detailsMain{
-    display: flex;
-    flex-wrap: wrap;
-}
 .searchFilter{
     display: flex;
     justify-content: space-between;
@@ -133,10 +129,11 @@ textarea{
 .detailsMain{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .detailContainer{
     display: flex;
-    height: 40vh;
+    height: 50vh;
     width: fit-content;
     border: 2px solid black;
 }
