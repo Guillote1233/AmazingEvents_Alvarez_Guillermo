@@ -14,7 +14,7 @@ function createCard(array, container){
             let div = document.createElement("div")
             div.className = "card col-lg-2 col-md-3 col-sm-12"
             div.innerHTML += `
-                <img src="${items.image}" class="card-img-top" alt="...">
+                <img src="${items.image}" class="card-img-top" alt="${items.image}">
                 <div class="card-body">
                     <h5 class="card-title">${items.name}</h5>
                     <p class="card-text">${items.category}</p>
@@ -27,7 +27,7 @@ function createCard(array, container){
             
         });
     }else{
-        console.log("no hay datos");
+        container.innerHTML = `<img src="../assets/img/notfound.gif" alt="not-found">`;
     }
     container.appendChild(fragment);
 }

@@ -136,8 +136,8 @@ textarea{
 }
 .detailContainer{
     display: flex;
-    height: 60vh;
-    width: 60vw;
+    height: 40vh;
+    width: fit-content;
     border: 2px solid black;
 }
 .imgContainer{
@@ -153,7 +153,7 @@ textarea{
     display: flex;
     flex-direction: column;
     text-align: center;
-    max-width: 35vw;
+    max-width: fit-content;
     max-height: fit-content;
     border: 2px solid black;
     margin: 20px 20px;
@@ -191,13 +191,12 @@ footer{
         font-size: x-small;
     }
     .detailContainer{
-        display: block;
-        height: max-content;
+        display: flex;
+        justify-content: center;
     }
     .imgContainer{
-        max-height: 30vh;
-        max-width: fit-content;
-        object-fit: contain;
+        height: 40vh;
+        width: 60vw;
         border: 2px solid black;
         margin:20px 20px;
     }
@@ -209,6 +208,20 @@ footer{
     }
     .socialMedia a img{
         width: 5vw;
+    }
+}
+
+@media screen and (max-width:578px) {
+    .cardContainer{
+        display: block;
+    }
+    .detailContainer{
+        display: block;
+        height: fit-content;
+    }
+    .imgContainer > img{
+        height: 30vh;
+        width: 60vw;
     }
 }
 

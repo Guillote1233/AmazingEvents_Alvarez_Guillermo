@@ -27,7 +27,7 @@ function createCard(array, container){
             
         });
     }else{
-        console.log("no hay datos");
+        container.innerHTML = `<img src="../assets/img/notfound.gif" alt="not-found">`;
     }
     container.appendChild(fragment);
 }
