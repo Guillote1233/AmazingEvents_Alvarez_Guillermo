@@ -1,10 +1,37 @@
-import data from './data.js';
-
 const cardContainer = document.getElementById('eventCard');
 const fragment = document.createDocumentFragment();
 const catCheckbox = document.getElementById('filterCat');
 const searchValue = document.querySelector('input[placeholder="Search..."]');
-const dataEvents = data.events.filter(elem => elem.date < data.currentDate);
+const loader = document.getElementById('loader');
+
+const showLoader = () => {
+    loader.classList.add('spinner-border');
+};
+
+const hideLoader = () => {
+    loader.classList.remove('spinner-border');
+};
+
+let data = [];
+let categories = [];
+
+async function getData() {
+    try {
+        const apiUrl = "../assets/js/amazing.json";
+        const response = await fetch(apiUrl);
+        const json = await response.json();
+        data = json;
+        const dataEvents = data.events.filter(elem => elem.date < data.currentDate);
+        hideLoader();
+        createCard(dataEvents, cardContainer);
+        categories = createCategoryList(dataEvents);
+        createCheckboxFilter(categories, catCheckbox);
+    } catch (error) {
+        console.log(error);
+    }
+}
+showLoader();
+getData();
 
 
 function createCard(array, container){
@@ -32,8 +59,6 @@ function createCard(array, container){
     container.appendChild(fragment);
 }
 
-createCard(dataEvents, cardContainer);
-
 function createCategoryList(array){
     let categories = array.map(cat => cat.category);
     categories = categories.reduce((accum, elem) => {
@@ -45,8 +70,6 @@ function createCategoryList(array){
         return categories;
 }
 
-let categories = createCategoryList(dataEvents);
-
 function createCheckboxFilter(array, container){
     array.forEach(category => {
         let div = document.createElement('div');
@@ -56,8 +79,6 @@ function createCheckboxFilter(array, container){
         container.appendChild(div);
     })
 }
-
-createCheckboxFilter(categories, catCheckbox);
 
 function searchFilter(array, value){
     let filterData = array.filter(elem => elem.name.toLowerCase().includes(value.toLowerCase()));

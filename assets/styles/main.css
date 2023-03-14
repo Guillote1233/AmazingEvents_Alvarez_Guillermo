@@ -169,6 +169,10 @@ footer{
 .socialMedia a img{
     width: 2vw;
 }
+.spinner{
+    display:flex;
+    justify-content: center;
+}
 
 @media screen and (max-width: 768px) {
     .searchFilter{
