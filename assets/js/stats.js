@@ -1,12 +1,15 @@
-const loader = document.getElementById("loader");
 const tableDataEvents = document.getElementById("eventsStats");
+const backgroundLoader = document.getElementById('back-loader');
+const loader = document.getElementById('spinner');
 
 const showLoader = () => {
-  loader.classList.add("spinner-border");
+    backgroundLoader.classList.remove('d-none');
+    loader.classList.add('spinner-border');
 };
 
 const hideLoader = () => {
-  loader.classList.remove("spinner-border");
+    backgroundLoader.classList.add('d-none')
+    loader.classList.remove('spinner-border');
 };
 
 let data = [];

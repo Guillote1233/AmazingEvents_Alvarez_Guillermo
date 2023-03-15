@@ -1,10 +1,13 @@
-const loader = document.getElementById('loader');
+const backgroundLoader = document.getElementById('back-loader');
+const loader = document.getElementById('spinner');
 
 const showLoader = () => {
+    backgroundLoader.classList.remove('d-none');
     loader.classList.add('spinner-border');
 };
 
 const hideLoader = () => {
+    backgroundLoader.classList.add('d-none')
     loader.classList.remove('spinner-border');
 };
 
