@@ -93,10 +93,8 @@ function getStats(array) {
     let estimateTotal = 0;
     let capacityTotal = 0;
     for (const event of eventsInCategory) {
-      revenueTotal += event.price
-        ? event.price * event.estimate
-        : event.price * event.assistance;
-      estimateTotal += event.estimate ? event.estimate : event.assistance;
+      revenueTotal += event.price * (event.estimate || event.assistance)
+      estimateTotal += event.estimate || event.assistance;
       capacityTotal += event.capacity;
     }
     const percentage = (estimateTotal / capacityTotal) * 100;
@@ -112,26 +110,22 @@ function getStats(array) {
 
 function drawStats(array, containerId) {
   const container = document.getElementById(containerId);
-  const row = document.getElementById('upEventsData');
 
   array.forEach((item) => {
-    /*const row = document.createElement('tr');*/
+    const row = document.createElement('tr');
 
     const categoryCell = document.createElement("td");
     categoryCell.innerText = item.name;
-    categoryCell.setAttribute('id', 'data${item.name}');
     row.appendChild(categoryCell);
 
     const revenueCell = document.createElement("td");
     revenueCell.innerText = item.revenue;
-    revenueCell.setAttribute('id', 'data${item.name}');
     row.appendChild(revenueCell);
 
     const percentageCell = document.createElement("td");
     percentageCell.innerText = item.percentage.toFixed(2);
-    percentageCell.setAttribute('id', 'data${item.name}');
     row.appendChild(percentageCell);
 
-    container.appendChild(row);
+  container.appendChild(row);
   });
 }

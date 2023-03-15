@@ -142,7 +142,6 @@ textarea{
 }
 .imgContainer{
     display: flex;
-    gap: 2;
     max-height: 30vh;
     max-width: fit-content;
     object-fit: contain;

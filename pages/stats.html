@@ -51,17 +51,19 @@
     <main class="statsMain">
         <div id="loader" class="spinner">
         </div>
-        <table class="statsTable">
+        <table class="statsTable" id="statsTable">
+            <thead>
                 <tr>
                     <th colspan="3" class="headTitle">Events statistics</th>
                 </tr>
+            </thead>
                 <tr>
                     <td class="titleData">Event with the highest percentage of attendance</td>
                     <td class="titleData">Event with the lowest percentage of attendance</td>
                     <td class="titleData">Event with larger capacity</td>
                 </tr>
-                <tr id="eventsStats">
-                </tr>
+                <tbody id="eventsStats">
+                </tbody>
                 <tr>
                     <td colspan="3" class="headTitle">Upcoming events statistics by category</td>
                 </tr>
@@ -70,8 +72,8 @@
                     <td class="titleData">Revenues</td>
                     <td class="titleData">Percentage of attendance</td>
                 </tr>
-                <tr id="upEventsData">
-                </tr>
+                <tbody id="upEventsData">
+                </tbody>
                 <tr>
                     <td colspan="3" class="headTitle">Past events statistics by category</td>
                 </tr>
@@ -80,8 +82,8 @@
                     <td class="titleData">Revenues</td>
                     <td class="titleData">Percentage of attendance</td>
                 </tr>
-                <tr id="pastEventsData">
-                </tr>
+                <tbody id="pastEventsData">
+                </tbody>
         </table>
     </main>
     <footer>
