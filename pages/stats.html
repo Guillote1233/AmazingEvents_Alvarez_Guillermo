@@ -49,80 +49,39 @@
         </div>
     </header>
     <main class="statsMain">
+        <div id="loader" class="spinner">
+        </div>
         <table class="statsTable">
-            <thead>
                 <tr>
                     <th colspan="3" class="headTitle">Events statistics</th>
                 </tr>
-            </thead>
-            <tbody>
                 <tr>
-                    <td>Events with the highest percentage of attendance</td>
-                    <td>Events with the lowest percentage of attendance</td>
-                    <td>Event with larger capacity</td>
+                    <td class="titleData">Event with the highest percentage of attendance</td>
+                    <td class="titleData">Event with the lowest percentage of attendance</td>
+                    <td class="titleData">Event with larger capacity</td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tr id="eventsStats">
                 </tr>
                 <tr>
                     <td colspan="3" class="headTitle">Upcoming events statistics by category</td>
                 </tr>
                 <tr>
-                    <td>Categories</td>
-                    <td>Revenues</td>
-                    <td>Percentage of attendance</td>
+                    <td class="titleData">Categories</td>
+                    <td class="titleData">Revenues</td>
+                    <td class="titleData">Percentage of attendance</td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tr id="upEventsData">
                 </tr>
                 <tr>
                     <td colspan="3" class="headTitle">Past events statistics by category</td>
                 </tr>
                 <tr>
-                    <td>Categories</td>
-                    <td>Revenues</td>
-                    <td>Percentage of attendance</td>
+                    <td class="titleData">Categories</td>
+                    <td class="titleData">Revenues</td>
+                    <td class="titleData">Percentage of attendance</td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tr id="pastEventsData">
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
         </table>
     </main>
     <footer>
@@ -138,5 +97,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <script src="../assets/js/stats.js"></script>
 </body>
 </html>

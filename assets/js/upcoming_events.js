@@ -26,6 +26,15 @@ async function getData() {
         createCard(dataEvents, cardContainer);
         categories = createCategoryList(dataEvents);
         createCheckboxFilter(categories, catCheckbox);
+        searchValue.addEventListener('keyup', () => {
+            let dataFilter = filterFinal(dataEvents)
+            createCard(dataFilter, cardContainer)
+        })
+        
+        catCheckbox.addEventListener('change', ()=> {
+            let dataFilter = filterFinal(dataEvents)
+            createCard(dataFilter, cardContainer)
+        })
     } catch (error) {
         console.log(error);
     }
@@ -104,13 +113,3 @@ function filterFinal(array){
     arrayFiltered = checkboxFilter(arrayFiltered);
     return arrayFiltered;
 }
-
-searchValue.addEventListener('keyup', () => {
-    let dataFilter = filterFinal(dataEvents)
-    createCard(dataFilter, cardContainer)
-})
-
-catCheckbox.addEventListener('change', ()=> {
-    let dataFilter = filterFinal(dataEvents)
-    createCard(dataFilter, cardContainer)
-})
