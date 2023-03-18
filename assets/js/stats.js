@@ -122,11 +122,11 @@ function drawStats(array, containerId) {
     row.appendChild(categoryCell);
 
     const revenueCell = document.createElement("td");
-    revenueCell.innerText = item.revenue;
+    revenueCell.innerText = "$ " + item.revenue;
     row.appendChild(revenueCell);
 
     const percentageCell = document.createElement("td");
-    percentageCell.innerText = item.percentage.toFixed(2);
+    percentageCell.innerText = item.percentage.toFixed(2) + " %";
     row.appendChild(percentageCell);
 
   container.appendChild(row);
